@@ -27,7 +27,7 @@ public class Hand {
         return cards.size();
     }
 
-    public List<Card> returnHandCards() {
+    public List<Card> getCards() {
         // Return the list of cards in the hand
         return cards;
     }
@@ -37,6 +37,8 @@ public class Hand {
         Comparator.comparingInt(card -> card.getRank().getValue())
     );
 }
+
+
 
 
 

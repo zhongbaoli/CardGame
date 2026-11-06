@@ -21,7 +21,7 @@ public class HandTest {
         Card card = deck.drawCard();
         hand.addCard(card);
         assertEquals(1, hand.getSize());
-        assertTrue(hand.returnHandCards().contains(card));
+        assertTrue(hand.getCards().contains(card));
     }
 
     @Test
@@ -29,10 +29,10 @@ public class HandTest {
         Card card = deck.drawCard();
         hand.addCard(card);
         assertEquals(1, hand.getSize());
-        assertTrue(hand.returnHandCards().contains(card));
+        assertTrue(hand.getCards().contains(card));
         hand.removeCard(card);
         assertEquals(0, hand.getSize());
-        assertFalse(hand.returnHandCards().contains(card));
+        assertFalse(hand.getCards().contains(card));
     }
 }
 

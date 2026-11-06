@@ -1,8 +1,13 @@
 let hand = [];
 
-export function loadHand() {
-    return fetch("/api/hand")
-        .then(response => response.json());
+export function loadHand(playerId) {
+    return fetch("/api/hand/${playerId}")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load hand");
+            }
+            response.json()
+        });
 }
 
 export function playCards(cardIds) {

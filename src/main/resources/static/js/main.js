@@ -2,12 +2,17 @@
 import { loadHand, playCards } from "./api.js";
 import { renderHand, renderPlayedCards, getSelectedCardIds } from "./ui.js";
 
+const params = new URLSearchParams(window.location.search);
+const playerId = Number(params.get("player"));
+console.log("PLAYER ID:", playerId);
+
+
 function handlePlay() {
     //find selected ids
     const cardIds = getSelectedCardIds();
 
     //send ids to java
-    playCards(cardIds)
+    playCards(playerId, cardIds)
         .then(result => {
             console.log(result);
             //wait for response
@@ -19,17 +24,21 @@ function handlePlay() {
                 );
 
                 //fetch new hand
-                loadHand().then(hand => {
+                loadHand(playerId).then(hand => {
                     renderHand(hand); //redraw hand
-                }); 
+                });
             }
         });
-}   
+}
 
 function main() {
-    loadHand().then(hand => {
-        renderHand(hand);
-    });
+    loadHand(playerId)
+        .then(hand => {
+            console.log("HAND:", hand);
+            console.log("IS ARRAY:", Array.isArray(hand));
+
+            renderHand(hand);
+        });
 
     document.getElementById("play-button").addEventListener("click", handlePlay);
 }

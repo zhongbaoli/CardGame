@@ -4,6 +4,7 @@ public class Player {
     private String name;
     private Hand hand;
     private Team team;
+    private int playerId;
 
     public Player(String name, Hand hand, Team team) {
         this.name = name;
@@ -11,19 +12,29 @@ public class Player {
         this.team = team;
     }
 
-    //public void playCards(List<Card> cardsToPlay) {
+    public Player(String name, Hand hand) {
+        this.name = name;
+        this.hand = hand;
+        this.team = null;
+    }
+
+    public Player(int id, Hand hand) {
+        this.playerId = id;
+        this.hand = hand;
+    }
+
+    // public void playCards(List<Card> cardsToPlay) {
     //// Logic for playing a card from the player's hand
-    //    scoreCards(cardsToPlay);
-    //    for (Card card : cardsToPlay) {
-    //        hand.removeCard(card);
-    //    }
-    //}
+    // scoreCards(cardsToPlay);
+    // for (Card card : cardsToPlay) {
+    // hand.removeCard(card);
+    // }
+    // }
 
     public void passTurn() {
         // Logic for passing the turn
-       
-    }
 
+    }
 
     public void addCardToHand(Card card) {
         hand.addCard(card);
@@ -48,5 +59,10 @@ public class Player {
     public Team getTeam() {
         return team;
     }
+
+    public int getId() {
+        return playerId;
+    }
+
 
 }

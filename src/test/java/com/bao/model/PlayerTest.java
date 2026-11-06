@@ -22,7 +22,7 @@ public class PlayerTest {
         Card card = deck.drawCard();
         player.addCardToHand(card);
         assertEquals(1, player.getHandSize());
-        assertTrue(player.getHand().returnHandCards().contains(card));
+        assertTrue(player.getHand().getCards().contains(card));
     }
 
     
